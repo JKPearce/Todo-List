@@ -39,6 +39,24 @@
                 </div>
             </div>
             <button class="add-new-task-btn" id="addTaskBtn">+Add Task</button>
+            <div class="add-new-task-form">
+                <form id="newTaskForm" action="">
+                    <input type="text" class="task-title" id="taskTitle" placeholder="Task Title" required maxlength="50">
+                    <input type="text" name="task-description" id="taskDescription" placeholder="Description" required maxlength="500">
+                    <input type="date" name="task-duedate" id="taskDueDate">
+                    <div class="priority-wrapper">
+                        <span>Priority: </span>
+                        <label for="priority-low">Low</label>
+                        <input type="radio" name="priority-low" id="priorityLow">
+                        <label for="priority-medium">Medium</label>
+                        <input type="radio" name="priority-medium" id="priorityMedium" checked>
+                        <label for="priority-high">High</label>
+                        <input type="radio" name="priority-high" id="priorityHigh">
+                    </div>
+                    <button class="btn-submit" type="submit">Save</button>
+                    <button class="btn-cancel">Cancel</button>
+                </form>
+            </div>
         </div>
     </main>
 </body>
