@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root{
+    --primary-dark: #075985;
+    --secondary-dark: #0ea5e9;
+    --primary-light: #bae6fd;
+    --secondary-light: #f0f9ff;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+main{
+    display: flex;
+}
+
+header{
+    width: 100%;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+
+aside{
+    width: 300px;
+    min-width: 250px;
+    height: calc(100vh - 90px );
+    background: var(--secondary-light);
+    padding: 20px;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+nav button {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    background-color: inherit;
+    text-align: left;
+}
+
+nav button:hover{
+    background-color: var(--secondary-dark);
+}
+
+.top-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.project-section h1{
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.project-section div{
+    margin-left: 2rem;
+}
+
+
+
