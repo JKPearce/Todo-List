@@ -45,7 +45,6 @@ function displayTaskList(){
 }
 
 function displayTaskForm(toggle){
-    console.log('y u no work');
     if (toggle) {
         addTaskButton.classList.add('active');
         addTaskForm.classList.add('active');
