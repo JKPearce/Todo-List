@@ -43,8 +43,8 @@
             </div>
             <button class="add-new-task-btn" id="addTaskBtn">+Add Task</button>
             <form class="add-new-task-form" id="newTaskForm" action="">
-                <input type="text" class="task-title" id="taskTitle" placeholder="Task Title" required maxlength="50">
-                <input type="text" name="task-description" id="taskDescription" placeholder="Description" required
+                <input type="text" class="task-title" id="taskTitle" placeholder="Task Title"  maxlength="50">
+                <input type="text" name="task-description" id="taskDescription" placeholder="Description" 
                     maxlength="500">
                 <div>
                     <label for="task-duedate">Due Date: </label>
@@ -54,15 +54,15 @@
                     <span>Priority: </span>
                     <div>
                         <label for="priority-low">Low</label>
-                        <input type="radio" name="radio" id="priorityLow">
+                        <input type="radio" name="radio" id="priorityLow" value="low">
                     </div>
                     <div>
                         <label for="priority-medium">Medium</label>
-                        <input type="radio" name="radio" id="priorityMedium" checked>
+                        <input type="radio" name="radio" id="priorityMedium" value="medium" checked>
                     </div>
                     <div>
                         <label for="priority-high">High</label>
-                        <input type="radio" name="radio" id="priorityHigh">
+                        <input type="radio" name="radio" id="priorityHigh" value="high">
                     </div>
                 </div>
                 <div class="form-buttons">
