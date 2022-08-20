@@ -1,9 +1,14 @@
 import "./scss/main.scss";
+import Task from "./modules/Task";
+import Project from "./modules/Project";
 
 const addTaskButton = document.getElementById('addTaskBtn');
 const addTaskForm = document.getElementById('newTaskForm');
+const currentProject = new Project("Default");
 
-const toggleTaskForm = (toggle) => {
+addTaskForm.onsubmit = addTaskToProject;
+
+const displayTaskForm = (toggle) => {
     if (toggle) {
         addTaskButton.classList.add('active');
         addTaskForm.classList.add('active');
@@ -15,19 +20,30 @@ const toggleTaskForm = (toggle) => {
 
 addTaskButton.addEventListener('click', () => {
     addTaskForm.reset();
-    toggleTaskForm(true);
+    displayTaskForm(true);
 });
 
-const saveTaskBtn = document.getElementById('submitNewTask');
 const cancelNewTask = document.getElementById('cancelNewTask');
+cancelNewTask.addEventListener('click', displayTaskForm(false));
 
-saveTaskBtn.addEventListener('click', (e) => {
+const getTaskFormData = () => {
+    const title = document.getElementById('taskTitle').value;
+    const description = document.getElementById('taskDescription').value;
+    const dueDate = new Date(document.getElementById('taskDueDate').value);
+    const priority = document.querySelector('input[name="radio"]:checked').value;
+    return new Task(title,description,dueDate,priority)
+}
+
+function addTaskToProject(e){
     e.preventDefault();
-    //save user data to a new task class from import
+    const newTask = getTaskFormData();
+    currentProject.addTask(newTask);
 
-    toggleTaskForm(false);
-});
+    console.log(currentProject.getTasks());
 
-cancelNewTask.addEventListener('click', toggleTaskForm(false));
+    displayTaskForm(false);
+};
+
+
 
 
