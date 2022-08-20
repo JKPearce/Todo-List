@@ -16,6 +16,7 @@ cancelNewTask.addEventListener('click', () =>{
 
 function displayTaskList(){
     const tasks = currentProject.getTasks();
+    todoWrapper.innerHTML = '';
     tasks.forEach((task) => {
         console.log(task);
         const card = document.createElement('div');
