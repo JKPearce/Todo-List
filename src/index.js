@@ -1,3 +1,5 @@
+import "./scss/main.scss";
+
 const addTaskButton = document.getElementById('addTaskBtn');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
 
