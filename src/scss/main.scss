@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-:root {
-    --primary-dark: #075985;
-    --secondary-dark: #0ea5e9;
-    --primary-light: #bae6fd;
-    --secondary-light: #f0f9ff;
-}
+$primary-dark: #075985;
+$secondary-dark: #0ea5e9;
+$primary-light: #bae6fd;
+$secondary-light: #f0f9ff;
 
 *,
 *::before,
@@ -16,8 +14,8 @@
 }
 
 body {
-    background-color: var(--primary-light);
-    color: var(--primary-dark);
+    background-color: $primary-light;
+    color: $primary-dark;
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     min-height: 100vh;
@@ -25,8 +23,8 @@ body {
 
 header {
     width: 100%;
-    background-color: var(--primary-dark);
-    color: var(--primary-light);
+    background-color: $primary-dark;
+    color: $primary-light;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -51,14 +49,14 @@ main {
     }
 
     button:hover {
-        background-color: var(--secondary-dark);
+        background-color: $secondary-dark;
     }
 
     aside {
         width: 300px;
         min-width: 250px;
         height: calc(100vh - 90px);
-        background: var(--secondary-light);
+        background: $secondary-light;
         padding: 20px;
 
         nav {
@@ -96,16 +94,73 @@ main {
 
         .add-new-task-btn {
             height: 50px;
+            display: inline-block;
+            &.active{
+                display: none;
+            }
         }
 
         .project-todo-card {
-            background-color: var(--secondary-light);
+            background-color: $secondary-light;
             display: flex;
             flex-direction: column;
             gap: 1rem;
             padding: 1rem;
             border-radius: 1rem;
             box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .add-new-task-form{
+            flex-direction: column;
+            gap: 1rem;
+            display: none;
+
+            &.active{
+                display:flex;
+            }
+            input{
+            font-size: 1.6rem;
+            resize: none;
+            }
+
+            #taskDescription{
+                overflow: auto;
+                height: 200px;
+            }
+
+            #taskDueDate{
+                max-width: 30%;
+                font-size: 1rem;
+            }
+
+            .priority-wrapper{
+                display: flex;
+                justify-content: flex-start;
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .btn-submit{
+                background: lightgreen;
+                color: $primary-dark;
+                font-weight: bold;
+            }
+
+            .btn-cancel{
+                background-color: rgba($color: red, $alpha: 0.3);
+                color: $primary-dark;
+                font-weight: bold;
+            }
+
+            button:hover{
+                background: #ccc;
+            }
+
+            .form-buttons{
+                display: flex;
+                gap: 0.5rem;
+            }
+
         }
     }
 }
