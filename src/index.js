@@ -9,9 +9,14 @@ const addProjectButton = document.getElementById('addProjectBtn');
 const addProjectForm = document.getElementById('addProjectForm');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
 const projectController = new ProjectController();
+const projectButtons = document.querySelectorAll('.project-btn');
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
+
+projectButtons.forEach(button => {
+    button.addEventListener('click', projectController.setCurrentProject);
+});
 
 function displayForm(formName, button, toggle){
     if (toggle) {
@@ -33,10 +38,9 @@ cancelNewTask.forEach(button => {
 });
 
 function displayTaskList(){
-    const tasks = currentProject.getTasks();
+    const tasks = projectController.getCurrentProject().getTasks();
     todoWrapper.innerHTML = '';
     tasks.forEach((task) => {
-        console.log(task);
         const card = document.createElement('div');
         const title = document.createElement('h2');
         const description = document.createElement('p');
@@ -77,7 +81,8 @@ addProjectButton.addEventListener('click', () =>{
 function addTaskToProject(e){
     e.preventDefault();
     const newTask = getTaskFormData();
-    currentProject.addTask(newTask);
+
+    projectController.getCurrentProject().addTask(newTask);
 
     displayForm(addTaskForm, addTaskButton, false);
     
@@ -94,7 +99,7 @@ const getTaskFormData = () => {
 
 function addNewProject(e){
     e.preventDefault();
-    console.log(projectController.getProjects());
+    // console.log(projectController.getProjects());
     projectController.addProject(document.getElementById('projectTitle').value);
 
     displayForm(addProjectForm, addProjectButton, false);
@@ -107,17 +112,12 @@ function displayProjects(){
    const projects = projectController.getProjects();
    projectWrapper.innerHTML = '';
 
-    projects.forEach((project) => {
+    projects.forEach((project, i) => {
         const projectButton = document.createElement('button');
         projectButton.classList.add('project-btn');
         projectButton.textContent = project.name;
+        projectButton.dataset.projectId = i;
+        projectButton.addEventListener('click', projectController.setCurrentProject);
         projectWrapper.appendChild(projectButton);
-    })
+    });
 }
-
-
-
-
-
-
-

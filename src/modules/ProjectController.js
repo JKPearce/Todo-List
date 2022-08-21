@@ -4,6 +4,8 @@ export default class ProjectController{
     constructor(){
         this.projects = [];
         this.projects.push(new Project("Default"));
+        this.projects.push(new Project("Today"));
+        this.projects.push(new Project("This Week"));
     }
 
     getProjects(){
@@ -16,5 +18,18 @@ export default class ProjectController{
 
     addProject(newProject){
         this.projects.push(new Project(newProject));
+    }
+
+    getCurrentProject(){
+        const selectedProject = document.querySelector('.selected');
+        const projectId = parseInt(selectedProject.dataset.projectId);
+        return this.projects[projectId];
+    }
+
+    setCurrentProject(e){
+        document.querySelectorAll('.selected').forEach(button=>{
+            button.classList.remove('selected');
+        });
+        e.target.classList.add('selected');
     }
 }
