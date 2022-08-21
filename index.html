@@ -43,9 +43,9 @@
             <section>
                 <button class="add-new-task-btn add" id="addTaskBtn">+ Add Task</button>
                 <form class="add-new-task-form" id="newTaskForm" action="">
-                    <input type="text" class="task-title" id="taskTitle" placeholder="Task Title"  maxlength="50">
-                    <input type="text" name="task-description" id="taskDescription" placeholder="Description"
-                        maxlength="500">
+                    <input type="text" class="task-title" id="taskTitle" placeholder="Task Title" maxlength="50">
+                    <textarea class="new-description" name="task-description" id="taskDescription" placeholder="Description"
+                        maxlength="500"></textarea>
                     <div>
                         <label for="task-duedate">Due Date: </label>
                         <input type="date" name="task-duedate" id="taskDueDate">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-buttons">
                         <button class="btn-submit" id="submitNewTask" type="submit">Save</button>
-                        <button type="button" class="btn-cancel" id="cancelNewTask" >Cancel</button>
+                        <button type="button" class="btn-cancel" id="cancelNewTask">Cancel</button>
                     </div>
             </section>
             </form>
