@@ -1,5 +1,13 @@
 # Todo-List
 Todo list to allow users to keep track of tasks they need to do
+Features Include
+- Add task
+- Add new projects
+- Display tasks due today
+- Display tasks due this week
+- Remove tasks
+- Edit existing tasks
+- Mark tasks as completed
 
 Live Demo: [Here](https://jkpearce.github.io/Todo-List/)
 
@@ -19,4 +27,6 @@ This project goals were to practice JavaScript Object Oriented Programming Princ
 - Add filter by date
 - Add filter by priority
 - Add ability to re-order projects in the list
+- Move all completed tasks to an archive project
+- Add side panel hider
 
