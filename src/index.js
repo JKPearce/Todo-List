@@ -4,9 +4,9 @@ import Project from "./modules/Project";
 import ProjectController from "./modules/ProjectController";
 
 const projectController = new ProjectController();
-const addTaskButton = document.getElementById('addTaskBtn');
+const addNewTaskButton = document.getElementById('addTaskBtn');
 const addTaskForm = document.getElementById('newTaskForm');
-const addProjectButton = document.getElementById('addProjectBtn');
+const addNewProjectButton = document.getElementById('addProjectBtn');
 const addProjectForm = document.getElementById('addProjectForm');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
 const projectButtons = document.querySelectorAll('.project-btn');
@@ -18,7 +18,7 @@ projectButtons.forEach(button => {
     button.addEventListener('click', swapProjects);
 });
 
-function displayForm(formName, button, toggle){
+function displayForm(formName, button, toggle) {
     if (toggle) {
         formName.classList.add('active');
         button.classList.add('active');
@@ -37,7 +37,7 @@ cancelNewTask.forEach(button => {
     }));
 });
 
-function displayTaskList(){
+function displayTaskList() {
     const tasks = projectController.getCurrentProject().getTasks();
     todoWrapper.innerHTML = '';
     tasks.forEach((task) => {
@@ -46,46 +46,62 @@ function displayTaskList(){
         const description = document.createElement('p');
         const dueDate = document.createElement('p');
         const priority = document.createElement('p');
+        const cardOptions = document.createElement('div');
+        const editButton = document.createElement('button');
+        const completeButton = document.createElement('button');
+        const deleteButton = document.createElement('button');
 
         card.classList.add('project-todo-card');
+        card.classList.add(task.priority);
         title.classList.add('todo-title');
         description.classList.add('todo-description');
         dueDate.classList.add('due-date');
         priority.classList.add('priority');
+        cardOptions.classList.add('card-options');
+        editButton.classList.add('edit-btn');
+        completeButton.classList.add('complete-btn');
+        deleteButton.classList.add('delete-btn');
 
         title.textContent = task.title;
         description.textContent = task.description;
         dueDate.textContent = task.dueDate
         priority.textContent = task.priority;
+        editButton.textContent = "Edit";
+        completeButton.textContent = "Mark Complete";
+        deleteButton.textContent = "Delete"
 
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(dueDate);
         card.appendChild(priority);
+        cardOptions.appendChild(completeButton);
+        cardOptions.appendChild(editButton);
+        cardOptions.appendChild(deleteButton);
+        card.appendChild(cardOptions);
         todoWrapper.appendChild(card)
     });
 }
 
-addTaskButton.addEventListener('click', () => {
-    displayForm(addProjectForm, addProjectButton, false);
+addNewTaskButton.addEventListener('click', () => {
+    displayForm(addProjectForm, addNewProjectButton, false);
     addTaskForm.reset();
-    displayForm(addTaskForm, addTaskButton, true);
+    displayForm(addTaskForm, addNewTaskButton, true);
 });
 
-addProjectButton.addEventListener('click', () =>{
-    displayForm(addTaskForm, addTaskButton, false);
+addNewProjectButton.addEventListener('click', () => {
+    displayForm(addTaskForm, addNewTaskButton, false);
     addProjectForm.reset();
-    displayForm(addProjectForm, addProjectButton, true);
+    displayForm(addProjectForm, addNewProjectButton, true);
 })
 
-function addTaskToProject(e){
+function addTaskToProject(e) {
     e.preventDefault();
     const newTask = getTaskFormData();
 
     projectController.getCurrentProject().addTask(newTask);
 
-    displayForm(addTaskForm, addTaskButton, false);
-    
+    displayForm(addTaskForm, addNewTaskButton, false);
+
     displayTaskList();
 };
 
@@ -94,23 +110,20 @@ const getTaskFormData = () => {
     const description = document.getElementById('taskDescription').value;
     const dueDate = new Date(document.getElementById('taskDueDate').value);
     const priority = document.querySelector('input[name="radio"]:checked').value;
-    return new Task(title,description,dueDate,priority)
+    return new Task(title, description, dueDate, priority)
 };
 
-function addNewProject(e){
+function addNewProject(e) {
     e.preventDefault();
-    // console.log(projectController.getProjects());
     projectController.addProject(document.getElementById('projectTitle').value);
-
-    displayForm(addProjectForm, addProjectButton, false);
-    
+    displayForm(addProjectForm, addNewProjectButton, false);
     displayProjects();
 }
 
-function displayProjects(){
+function displayProjects() {
     const projectWrapper = document.getElementById('projectWrapper');
-   const projects = projectController.getProjects();
-   projectWrapper.innerHTML = '';
+    const projects = projectController.getProjects();
+    projectWrapper.innerHTML = '';
 
     projects.forEach((project, i) => {
         const projectButton = document.createElement('button');
@@ -122,7 +135,7 @@ function displayProjects(){
     });
 }
 
-function swapProjects(e){
+function swapProjects(e) {
     projectController.setCurrentProject(e);
     displayTaskList();
 }
