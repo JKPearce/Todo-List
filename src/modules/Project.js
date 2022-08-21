@@ -1,7 +1,9 @@
+import { displayTaskList } from "..";
+
 export default class Project{
     constructor(name){
         this.name = name;
-        this.tasks = []
+        this.tasks = [];
     }
 
     setName(name){
@@ -22,5 +24,11 @@ export default class Project{
 
     addTask(newTask){
         this.tasks.push(newTask);
+    }
+
+    deleteTask(e){
+        const taskId = parseInt(e.target.closest('.card').dataset.taskId);
+        this.tasks.splice(taskId, 1);
+        displayTaskList();
     }
 }

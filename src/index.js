@@ -40,7 +40,7 @@ cancelNewTask.forEach(button => {
 function displayTaskList() {
     const tasks = projectController.getCurrentProject().getTasks();
     todoWrapper.innerHTML = '';
-    tasks.forEach((task) => {
+    tasks.forEach((task, i) => {
         const card = document.createElement('div');
         const title = document.createElement('h2');
         const description = document.createElement('p');
@@ -51,8 +51,9 @@ function displayTaskList() {
         const completeButton = document.createElement('button');
         const deleteButton = document.createElement('button');
 
-        card.classList.add('project-todo-card');
+        card.classList.add('card');
         card.classList.add(task.priority);
+        card.dataset.taskId = i;
         title.classList.add('todo-title');
         description.classList.add('todo-description');
         dueDate.classList.add('due-date');
@@ -78,6 +79,10 @@ function displayTaskList() {
         cardOptions.appendChild(editButton);
         cardOptions.appendChild(deleteButton);
         card.appendChild(cardOptions);
+
+        deleteButton.addEventListener('click', (e) => {
+            projectController.getCurrentProject().deleteTask(e);
+        });
         todoWrapper.appendChild(card)
     });
 }
@@ -127,7 +132,7 @@ function displayProjects() {
 
     projects.forEach((project, i) => {
         //stop creation of default project folders
-        if(i < 3)return;
+        if (i < 3) return;
         //make all new user created projects
         const projectButton = document.createElement('button');
         projectButton.classList.add('project-btn');
@@ -142,3 +147,5 @@ function swapProjects(e) {
     projectController.setCurrentProject(e);
     displayTaskList();
 }
+
+export { displayTaskList };
