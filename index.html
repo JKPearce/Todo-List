@@ -29,18 +29,18 @@
                         <button class="project-btn">Test Project</button>
                     </div>
                     <button class="add-project-btn" id="addProjectBtn">+ Add Project</button>
+                    <form action="" id="addProjectForm">
+                        <input type="text" name="projectTitle" id="projectTitle" placeholder="Project Title">
+                        <div class="add-project-form-buttons">
+                            <button class="btn-submit" id="submitNewTask" type="submit">Save</button>
+                            <button type="button" class="btn-cancel" id="cancelNewTask" >Cancel</button>
+                        </div>
+                    </form>
                 </div>
             </nav>
         </aside>
         <div class="content">
-            <div class="project-todo-wrapper">
-                <div class="project-todo-card">
-                    <h2 class="todo-title">Test Title</h2>
-                    <p class="todo-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-                        possimus optio dolorum molestiae tempore natus porro minus rerum dolore expedita?</p>
-                    <p class="due-date">10/10/2020</p>
-                </div>
-            </div>
+            <div class="project-todo-wrapper"></div>
             <button class="add-new-task-btn" id="addTaskBtn">+Add Task</button>
             <form class="add-new-task-form" id="newTaskForm" action="">
                 <input type="text" class="task-title" id="taskTitle" placeholder="Task Title"  maxlength="50">
