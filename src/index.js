@@ -3,19 +3,19 @@ import Task from "./modules/Task";
 import Project from "./modules/Project";
 import ProjectController from "./modules/ProjectController";
 
+const projectController = new ProjectController();
 const addTaskButton = document.getElementById('addTaskBtn');
 const addTaskForm = document.getElementById('newTaskForm');
 const addProjectButton = document.getElementById('addProjectBtn');
 const addProjectForm = document.getElementById('addProjectForm');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
-const projectController = new ProjectController();
 const projectButtons = document.querySelectorAll('.project-btn');
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
 
 projectButtons.forEach(button => {
-    button.addEventListener('click', projectController.setCurrentProject);
+    button.addEventListener('click', swapProjects);
 });
 
 function displayForm(formName, button, toggle){
@@ -117,7 +117,12 @@ function displayProjects(){
         projectButton.classList.add('project-btn');
         projectButton.textContent = project.name;
         projectButton.dataset.projectId = i;
-        projectButton.addEventListener('click', projectController.setCurrentProject);
+        projectButton.addEventListener('click', swapProjects);
         projectWrapper.appendChild(projectButton);
     });
+}
+
+function swapProjects(e){
+    projectController.setCurrentProject(e);
+    displayTaskList();
 }
