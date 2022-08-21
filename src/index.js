@@ -4,14 +4,38 @@ import Project from "./modules/Project";
 
 const addTaskButton = document.getElementById('addTaskBtn');
 const addTaskForm = document.getElementById('newTaskForm');
+const addProjectButton = document.getElementById('addProjectBtn');
+const addProjectForm = document.getElementById('addProjectForm');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
 const currentProject = new Project("Default");
 
 addTaskForm.onsubmit = addTaskToProject;
 
-const cancelNewTask = document.getElementById('cancelNewTask');
-cancelNewTask.addEventListener('click', () =>{
-    displayTaskForm(false)
+function displayTaskForm(toggle){
+    if (toggle) {
+        addTaskButton.classList.add('active');
+        addTaskForm.classList.add('active');
+    } else {
+        addTaskButton.classList.remove('active');
+        addTaskForm.classList.remove('active');
+    }
+}
+
+function displayProjectForm(toggle){
+    if (toggle) {
+        addProjectButton.classList.add('active');
+        addProjectForm.classList.add('active');
+    } else {
+        addProjectButton.classList.remove('active');
+        addProjectForm.classList.remove('active');
+    }
+}
+
+const cancelNewTask = document.querySelectorAll('.btn-cancel');
+cancelNewTask.forEach(button => {
+    button.addEventListener('click', () => {
+        displayTaskForm(false);
+    });
 });
 
 function displayTaskList(){
@@ -44,20 +68,17 @@ function displayTaskList(){
     });
 }
 
-function displayTaskForm(toggle){
-    if (toggle) {
-        addTaskButton.classList.add('active');
-        addTaskForm.classList.add('active');
-    } else {
-        addTaskButton.classList.remove('active');
-        addTaskForm.classList.remove('active');
-    }
-}
-
 addTaskButton.addEventListener('click', () => {
+    displayProjectForm(false);
     addTaskForm.reset();
     displayTaskForm(true);
 });
+
+addProjectButton.addEventListener('click', () =>{
+    displayTaskForm(false);
+    addProjectForm.reset();
+    displayProjectForm(true);
+})
 
 function addTaskToProject(e){
     e.preventDefault();
