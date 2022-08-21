@@ -126,6 +126,9 @@ function displayProjects() {
     projectWrapper.innerHTML = '';
 
     projects.forEach((project, i) => {
+        //stop creation of default project folders
+        if(i < 3)return;
+        //make all new user created projects
         const projectButton = document.createElement('button');
         projectButton.classList.add('project-btn');
         projectButton.textContent = project.name;
