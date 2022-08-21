@@ -1,15 +1,17 @@
 import "./scss/main.scss";
 import Task from "./modules/Task";
 import Project from "./modules/Project";
+import ProjectController from "./modules/ProjectController";
 
 const addTaskButton = document.getElementById('addTaskBtn');
 const addTaskForm = document.getElementById('newTaskForm');
 const addProjectButton = document.getElementById('addProjectBtn');
 const addProjectForm = document.getElementById('addProjectForm');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
-const currentProject = new Project("Default");
+const projectController = new ProjectController();
 
 addTaskForm.onsubmit = addTaskToProject;
+addProjectForm.onsubmit = addNewProject;
 
 function displayForm(formName, button, toggle){
     if (toggle) {
@@ -89,6 +91,29 @@ const getTaskFormData = () => {
     const priority = document.querySelector('input[name="radio"]:checked').value;
     return new Task(title,description,dueDate,priority)
 };
+
+function addNewProject(e){
+    e.preventDefault();
+    console.log(projectController.getProjects());
+    projectController.addProject(document.getElementById('projectTitle').value);
+
+    displayForm(addProjectForm, addProjectButton, false);
+    
+    displayProjects();
+}
+
+function displayProjects(){
+    const projectWrapper = document.getElementById('projectWrapper');
+   const projects = projectController.getProjects();
+   projectWrapper.innerHTML = '';
+
+    projects.forEach((project) => {
+        const projectButton = document.createElement('button');
+        projectButton.classList.add('project-btn');
+        projectButton.textContent = project.name;
+        projectWrapper.appendChild(projectButton);
+    })
+}
 
 
 
