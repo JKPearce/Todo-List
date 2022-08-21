@@ -23,9 +23,11 @@ function displayForm(formName, button, toggle){
 
 const cancelNewTask = document.querySelectorAll('.btn-cancel');
 cancelNewTask.forEach(button => {
-    button.addEventListener('click', () => {
-        displayForm(addTaskForm, addTaskButton, false);
-    });
+    button.addEventListener('click', ((e) => {
+        //i hate that i had to wrap the button and form in a section just to select the button
+        e.currentTarget.closest('section').querySelector('.add').classList.remove('active');
+        e.currentTarget.closest('form').classList.remove('active');
+    }));
 });
 
 function displayTaskList(){

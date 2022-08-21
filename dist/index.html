@@ -28,47 +28,51 @@
                         <button class="project-btn">Test Project</button>
                         <button class="project-btn">Test Project</button>
                     </div>
-                    <button class="add-project-btn" id="addProjectBtn">+ Add Project</button>
-                    <form action="" id="addProjectForm">
-                        <input type="text" name="projectTitle" id="projectTitle" placeholder="Project Title">
-                        <div class="add-project-form-buttons">
-                            <button class="btn-submit" id="submitNewTask" type="submit">Save</button>
-                            <button type="button" class="btn-cancel" id="cancelNewTask" >Cancel</button>
-                        </div>
-                    </form>
+                    <section>
+                        <button class="add-project-btn add" id="addProjectBtn">+ Add Project</button>
+                        <form action="" id="addProjectForm">
+                            <input type="text" name="projectTitle" id="projectTitle" placeholder="Project Title">
+                            <div class="add-project-form-buttons">
+                                <button class="btn-submit" id="submitNewTask" type="submit">Save</button>
+                                <button class="btn-cancel" id="cancelNewTask" type="button">Cancel</button>
+                            </div>
+                        </form>
+                    </section>
                 </div>
             </nav>
         </aside>
         <div class="content">
             <div class="project-todo-wrapper"></div>
-            <button class="add-new-task-btn" id="addTaskBtn">+Add Task</button>
-            <form class="add-new-task-form" id="newTaskForm" action="">
-                <input type="text" class="task-title" id="taskTitle" placeholder="Task Title"  maxlength="50">
-                <input type="text" name="task-description" id="taskDescription" placeholder="Description" 
-                    maxlength="500">
-                <div>
-                    <label for="task-duedate">Due Date: </label>
-                    <input type="date" name="task-duedate" id="taskDueDate">
-                </div>
-                <div class="priority-wrapper">
-                    <span>Priority: </span>
+            <section>
+                <button class="add-new-task-btn add" id="addTaskBtn">+ Add Task</button>
+                <form class="add-new-task-form" id="newTaskForm" action="">
+                    <input type="text" class="task-title" id="taskTitle" placeholder="Task Title"  maxlength="50">
+                    <input type="text" name="task-description" id="taskDescription" placeholder="Description"
+                        maxlength="500">
                     <div>
-                        <label for="priority-low">Low</label>
-                        <input type="radio" name="radio" id="priorityLow" value="low">
+                        <label for="task-duedate">Due Date: </label>
+                        <input type="date" name="task-duedate" id="taskDueDate">
                     </div>
-                    <div>
-                        <label for="priority-medium">Medium</label>
-                        <input type="radio" name="radio" id="priorityMedium" value="medium" checked>
+                    <div class="priority-wrapper">
+                        <span>Priority: </span>
+                        <div>
+                            <label for="priority-low">Low</label>
+                            <input type="radio" name="radio" id="priorityLow" value="low">
+                        </div>
+                        <div>
+                            <label for="priority-medium">Medium</label>
+                            <input type="radio" name="radio" id="priorityMedium" value="medium" checked>
+                        </div>
+                        <div>
+                            <label for="priority-high">High</label>
+                            <input type="radio" name="radio" id="priorityHigh" value="high">
+                        </div>
                     </div>
-                    <div>
-                        <label for="priority-high">High</label>
-                        <input type="radio" name="radio" id="priorityHigh" value="high">
+                    <div class="form-buttons">
+                        <button class="btn-submit" id="submitNewTask" type="submit">Save</button>
+                        <button type="button" class="btn-cancel" id="cancelNewTask" >Cancel</button>
                     </div>
-                </div>
-                <div class="form-buttons">
-                    <button class="btn-submit" id="submitNewTask" type="submit">Save</button>
-                    <button type="button" class="btn-cancel" id="cancelNewTask" >Cancel</button>
-                </div>
+            </section>
             </form>
         </div>
     </main>
