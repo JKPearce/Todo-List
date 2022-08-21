@@ -11,30 +11,20 @@ const currentProject = new Project("Default");
 
 addTaskForm.onsubmit = addTaskToProject;
 
-function displayTaskForm(toggle){
+function displayForm(formName, button, toggle){
     if (toggle) {
-        addTaskButton.classList.add('active');
-        addTaskForm.classList.add('active');
+        formName.classList.add('active');
+        button.classList.add('active');
     } else {
-        addTaskButton.classList.remove('active');
-        addTaskForm.classList.remove('active');
-    }
-}
-
-function displayProjectForm(toggle){
-    if (toggle) {
-        addProjectButton.classList.add('active');
-        addProjectForm.classList.add('active');
-    } else {
-        addProjectButton.classList.remove('active');
-        addProjectForm.classList.remove('active');
+        formName.classList.remove('active');
+        button.classList.remove('active');
     }
 }
 
 const cancelNewTask = document.querySelectorAll('.btn-cancel');
 cancelNewTask.forEach(button => {
     button.addEventListener('click', () => {
-        displayTaskForm(false);
+        displayForm(addTaskForm, addTaskButton, false);
     });
 });
 
@@ -69,15 +59,15 @@ function displayTaskList(){
 }
 
 addTaskButton.addEventListener('click', () => {
-    displayProjectForm(false);
+    displayForm(addProjectForm, addProjectButton, false);
     addTaskForm.reset();
-    displayTaskForm(true);
+    displayForm(addTaskForm, addTaskButton, true);
 });
 
 addProjectButton.addEventListener('click', () =>{
-    displayTaskForm(false);
+    displayForm(addTaskForm, addTaskButton, false);
     addProjectForm.reset();
-    displayProjectForm(true);
+    displayForm(addProjectForm, addProjectButton, true);
 })
 
 function addTaskToProject(e){
@@ -85,7 +75,7 @@ function addTaskToProject(e){
     const newTask = getTaskFormData();
     currentProject.addTask(newTask);
 
-    displayTaskForm(false);
+    displayForm(addTaskForm, addTaskButton, false);
     
     displayTaskList();
 };
