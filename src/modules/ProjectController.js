@@ -3,7 +3,7 @@ import Project from "./Project";
 export default class ProjectController{
     constructor(){
         this.projects = [];
-        this.projects.push(new Project("Default"));
+        this.projects.push(new Project("Home"));
         this.projects.push(new Project("Today"));
         this.projects.push(new Project("This Week"));
     }

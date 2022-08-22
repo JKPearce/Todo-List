@@ -13,6 +13,7 @@ const projectButtons = document.querySelectorAll('.project-btn');
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
+displayTaskList();
 
 projectButtons.forEach(button => {
     button.addEventListener('click', swapProjects);
@@ -39,7 +40,12 @@ cancelNewTask.forEach(button => {
 
 function displayTaskList() {
     const tasks = projectController.getCurrentProject().getTasks();
+    const projectTitle = projectController.getCurrentProject().name;
+    const projectTitleElement = document.createElement('h1');
     todoWrapper.innerHTML = '';
+    projectTitleElement.textContent = projectTitle;
+
+    todoWrapper.appendChild(projectTitleElement);
     tasks.forEach((task, i) => {
         const card = document.createElement('div');
         const title = document.createElement('h2');
