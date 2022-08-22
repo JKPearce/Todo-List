@@ -2,6 +2,7 @@ import "./scss/main.scss";
 import Task from "./modules/Task";
 import Project from "./modules/Project";
 import ProjectController from "./modules/ProjectController";
+import { format } from "date-fns";
 
 const projectController = new ProjectController();
 const addNewTaskButton = document.getElementById('addTaskBtn');
@@ -71,7 +72,7 @@ function displayTaskList() {
 
         title.textContent = task.title;
         description.textContent = task.description;
-        dueDate.textContent = task.dueDate
+        dueDate.textContent = format(task.dueDate, "dd/MM/yyyy");
         priority.textContent = task.priority;
         editButton.textContent = "Edit";
         completeButton.textContent = "Mark Complete";
@@ -89,6 +90,34 @@ function displayTaskList() {
         deleteButton.addEventListener('click', (e) => {
             projectController.getCurrentProject().deleteTask(e);
         });
+
+        editButton.addEventListener('click', (e) => {
+            const taskWrapper = e.target.closest('.card');
+            const taskId = parseInt(taskWrapper.dataset.taskId);
+            const selectedTask = projectController.getCurrentProject().getTask(taskId);
+
+            console.log({ taskWrapper });
+            title.contentEditable = true;
+            description.contentEditable = true;
+            taskWrapper.classList.add('editing');
+
+            if (e.target.innerText === "Save") {
+                selectedTask.title = taskWrapper.querySelector('.todo-title').textContent;
+                selectedTask.description = taskWrapper.querySelector('.todo-description').textContent;
+
+                //cleanup
+                editButton.innerText = "Edit";
+                title.contentEditable = false;
+                description.contentEditable = false;
+                taskWrapper.classList.remove('editing');
+                displayTaskList();
+
+            } else {
+                editButton.innerText = "Save";
+            }
+
+        });
+
         todoWrapper.appendChild(card)
     });
 }

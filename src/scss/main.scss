@@ -34,7 +34,7 @@ header {
 main {
     display: flex;
 
-    .selected{
+    .selected {
         background: #ccc;
     }
 
@@ -87,24 +87,25 @@ main {
                 }
             }
 
-            .add-project-btn{
+            .add-project-btn {
                 display: inline-block;
-                &.active{
+
+                &.active {
                     display: none;
                 }
             }
 
-            form{
+            form {
                 display: none;
                 flex-direction: column;
                 padding: 10px;
                 gap: 1rem;
 
-                &.active{
+                &.active {
                     display: flex;
                 }
 
-                input{
+                input {
                     font-size: 1.6rem;
                     padding: 10px;
                     border-radius: 10px;
@@ -112,22 +113,22 @@ main {
                     box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
                 }
 
-                .add-project-form-buttons{
+                .add-project-form-buttons {
                     display: flex;
                     gap: 0.5rem;
-                    
+
                     .btn-submit {
                         background: lightgreen;
                         color: $primary-dark;
                         font-weight: bold;
                     }
-        
+
                     .btn-cancel {
                         background-color: rgba($color: red, $alpha: 0.3);
                         color: $primary-dark;
                         font-weight: bold;
                     }
-        
+
                     button:hover {
                         background: #ccc;
                     }
@@ -169,24 +170,31 @@ main {
             border: 2px solid;
             box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
 
-            &.low{
+            &.low {
                 border-color: rgba($color: green, $alpha: 1);
             }
 
-            &.medium{
+            &.medium {
                 border-color: rgba($color: yellow, $alpha: 1);
             }
 
-            &.high{
+            &.high {
                 border-color: rgba($color: red, $alpha: 1);
             }
 
-            .card-options{
-                display:flex;
+            &.editing {
+                .todo-title, .todo-description{
+                    border: 1px solid black;
+                    padding: 1rem;
+                }
+            }
+
+            .card-options {
+                display: flex;
                 gap: 0.5rem;
 
-                .delete-btn{
-                    color:red;
+                .delete-btn {
+                    color: red;
                 }
             }
         }
@@ -209,7 +217,7 @@ main {
                 box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
             }
 
-            .new-description{
+            .new-description {
                 resize: vertical;
                 font-size: 1.2rem;
                 padding: 10px;
@@ -218,7 +226,7 @@ main {
                 box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
             }
 
-            input[type="radio"]{
+            input[type="radio"] {
                 box-shadow: none;
             }
 
