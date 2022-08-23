@@ -29,4 +29,5 @@ This project goals were to practice JavaScript Object Oriented Programming Princ
 - Add ability to re-order projects in the list
 - Move all completed tasks to an archive project
 - Add side panel hider
+- Make page reactive to small screens
 
