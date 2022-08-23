@@ -109,18 +109,14 @@ function displayTaskList() {
                 displayTaskList();
             } else {
                 editButton.innerText = "Save";
-
                 title.contentEditable = true;
                 description.contentEditable = true;
 
-                //date
-                const editDueDate = document.createElement('input');
+                const newDueDate = document.createElement('input');
                 const currentDateElement = taskWrapper.querySelector('.due-date');
-                editDueDate.type = "date";
-                editDueDate.value = formatISO(selectedTask.getDueDate(), { representation: 'date' });
-                taskWrapper.replaceChild(editDueDate, currentDateElement);
-
-                //priority
+                newDueDate.type = "date";
+                newDueDate.value = formatISO(selectedTask.getDueDate(), { representation: 'date' });
+                taskWrapper.replaceChild(newDueDate, currentDateElement);
 
                 taskWrapper.classList.add('editing');
             }
