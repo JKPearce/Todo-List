@@ -189,6 +189,20 @@ main {
                 }
             }
 
+            .todo-description{
+                display:none;
+                &.show{
+                    display: block;
+                }
+            }
+
+            .priority{
+                display: none;
+                &.show{
+                    display: block;
+                }
+            }
+
             .card-options {
                 display: flex;
                 gap: 0.5rem;

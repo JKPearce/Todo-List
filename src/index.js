@@ -1,8 +1,9 @@
 import "./scss/main.scss";
 import Task from "./modules/Task";
-import Project from "./modules/Project";
 import ProjectController from "./modules/ProjectController";
 import { format, formatISO } from "date-fns";
+import { library, icon } from '@fortawesome/fontawesome-svg-core';
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
 const projectController = new ProjectController();
 const addNewTaskButton = document.getElementById('addTaskBtn');
@@ -11,6 +12,10 @@ const addNewProjectButton = document.getElementById('addProjectBtn');
 const addProjectForm = document.getElementById('addProjectForm');
 const todoWrapper = document.querySelector('.project-todo-wrapper');
 const projectButtons = document.querySelectorAll('.project-btn');
+
+//font awesome icon creation
+library.add(faPenToSquare);
+const faPenToSquareIcon = icon(faPenToSquare);
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
@@ -54,7 +59,7 @@ function displayTaskList() {
         const dueDate = document.createElement('p');
         const priority = document.createElement('p');
         const cardOptions = document.createElement('div');
-        const editButton = document.createElement('button');
+        const editButton = document.createElement('span');
         const completeButton = document.createElement('button');
         const deleteButton = document.createElement('button');
 
@@ -74,10 +79,11 @@ function displayTaskList() {
         description.textContent = task.description;
         dueDate.textContent = format(task.dueDate, "dd/MM/yyyy");
         priority.textContent = task.priority;
-        editButton.textContent = "Edit";
         completeButton.textContent = "Mark Complete";
         deleteButton.textContent = "Delete"
 
+
+        editButton.appendChild(faPenToSquareIcon.node[0])
         card.appendChild(title);
         card.appendChild(description);
         card.appendChild(dueDate);
@@ -111,6 +117,8 @@ function displayTaskList() {
                 editButton.innerText = "Save";
                 title.contentEditable = true;
                 description.contentEditable = true;
+                title.classList.add('show');
+                description.classList.add('show');
 
                 const newDueDate = document.createElement('input');
                 const currentDateElement = taskWrapper.querySelector('.due-date');
