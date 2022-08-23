@@ -2,7 +2,7 @@ import "./scss/main.scss";
 import Task from "./modules/Task";
 import Project from "./modules/Project";
 import ProjectController from "./modules/ProjectController";
-import { format } from "date-fns";
+import { format, formatISO } from "date-fns";
 
 const projectController = new ProjectController();
 const addNewTaskButton = document.getElementById('addTaskBtn');
@@ -96,26 +96,34 @@ function displayTaskList() {
             const taskId = parseInt(taskWrapper.dataset.taskId);
             const selectedTask = projectController.getCurrentProject().getTask(taskId);
 
-            console.log({ taskWrapper });
-            title.contentEditable = true;
-            description.contentEditable = true;
-            taskWrapper.classList.add('editing');
-
             if (e.target.innerText === "Save") {
-                selectedTask.title = taskWrapper.querySelector('.todo-title').textContent;
-                selectedTask.description = taskWrapper.querySelector('.todo-description').textContent;
+                selectedTask.setTitle(taskWrapper.querySelector('.todo-title').textContent);
+                selectedTask.setDescription(taskWrapper.querySelector('.todo-description').textContent);
+                selectedTask.setDueDate(new Date(taskWrapper.querySelector('input[type="date"]').value));
+                console.log(taskWrapper.querySelector('input[type="date"]').value);
 
-                //cleanup
                 editButton.innerText = "Edit";
                 title.contentEditable = false;
                 description.contentEditable = false;
                 taskWrapper.classList.remove('editing');
                 displayTaskList();
-
             } else {
                 editButton.innerText = "Save";
-            }
 
+                title.contentEditable = true;
+                description.contentEditable = true;
+
+                //date
+                const editDueDate = document.createElement('input');
+                const currentDateElement = taskWrapper.querySelector('.due-date');
+                editDueDate.type = "date";
+                editDueDate.value = formatISO(selectedTask.getDueDate(), { representation: 'date' });
+                taskWrapper.replaceChild(editDueDate, currentDateElement);
+
+                //priority
+
+                taskWrapper.classList.add('editing');
+            }
         });
 
         todoWrapper.appendChild(card)
