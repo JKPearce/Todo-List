@@ -3,7 +3,8 @@ import Task from "./modules/Task";
 import ProjectController from "./modules/ProjectController";
 import { format, formatISO } from "date-fns";
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare, faTrashCan, } from "@fortawesome/free-regular-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 const projectController = new ProjectController();
 const addNewTaskButton = document.getElementById('addTaskBtn');
@@ -14,9 +15,10 @@ const todoWrapper = document.querySelector('.project-todo-wrapper');
 const projectButtons = document.querySelectorAll('.project-btn');
 
 //font awesome icon creation
-library.add(faPenToSquare, faTrashCan);
+library.add(faPenToSquare, faTrashCan, faArrowDown);
 const faPenToSquareIcon = icon(faPenToSquare);
 const faTrashCanIcon = icon(faTrashCan);
+const faArrowDownIcon = icon(faArrowDown);
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
@@ -63,6 +65,7 @@ function displayTaskList() {
         const cardOptions = document.createElement('div');
         const editButton = document.createElement('i');
         const deleteButton = document.createElement('i');
+        const expandArrow = document.createElement('i');
 
         card.classList.add('card');
         card.classList.add(task.priority);
@@ -74,6 +77,7 @@ function displayTaskList() {
         cardOptions.classList.add('card-options');
         editButton.classList.add('edit-btn');
         deleteButton.classList.add('delete-btn');
+        expandArrow.classList.add('arrow');
 
         title.textContent = task.title;
         description.textContent = task.description;
@@ -83,10 +87,12 @@ function displayTaskList() {
 
         editButton.appendChild(faPenToSquareIcon.node[0]);
         deleteButton.appendChild(faTrashCanIcon.node[0]);
+        expandArrow.appendChild(faArrowDownIcon.node[0]);
         card.appendChild(title);
         card.appendChild(dueDate);
         card.appendChild(description);
         card.appendChild(priority);
+        card.appendChild(expandArrow);
         cardOptions.appendChild(editButton);
         cardOptions.appendChild(deleteButton);
         card.appendChild(cardOptions);
@@ -100,9 +106,11 @@ function displayTaskList() {
 
             if(e.target.closest('.card').classList.contains('editing')) return;
             if(description.classList.contains('show')){
-                e.target.closest('.card').querySelector('.todo-description').classList.remove("show");
+                description.classList.remove("show");
+                e.target.closest('.card').querySelector('.arrow').classList.remove('up');
             }else{
                 description.classList.add("show");
+                e.target.closest('.card').querySelector('.arrow').classList.add('up');
             }
         });
 
