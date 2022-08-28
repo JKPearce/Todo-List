@@ -3,7 +3,7 @@ import Task from "./modules/Task";
 import ProjectController from "./modules/ProjectController";
 import { format, formatISO } from "date-fns";
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
 const projectController = new ProjectController();
 const addNewTaskButton = document.getElementById('addTaskBtn');
@@ -14,8 +14,9 @@ const todoWrapper = document.querySelector('.project-todo-wrapper');
 const projectButtons = document.querySelectorAll('.project-btn');
 
 //font awesome icon creation
-library.add(faPenToSquare);
+library.add(faPenToSquare, faTrashCan);
 const faPenToSquareIcon = icon(faPenToSquare);
+const faTrashCanIcon = icon(faTrashCan);
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
@@ -60,9 +61,8 @@ function displayTaskList() {
         const dueDate = document.createElement('p');
         const priority = document.createElement('p');
         const cardOptions = document.createElement('div');
-        const editButton = document.createElement('span');
-        const completeButton = document.createElement('button');
-        const deleteButton = document.createElement('button');
+        const editButton = document.createElement('i');
+        const deleteButton = document.createElement('i');
 
         card.classList.add('card');
         card.classList.add(task.priority);
@@ -73,29 +73,37 @@ function displayTaskList() {
         priority.classList.add('priority');
         cardOptions.classList.add('card-options');
         editButton.classList.add('edit-btn');
-        completeButton.classList.add('complete-btn');
         deleteButton.classList.add('delete-btn');
 
         title.textContent = task.title;
         description.textContent = task.description;
         dueDate.textContent = format(task.dueDate, "dd/MM/yyyy");
         priority.textContent = task.priority;
-        completeButton.textContent = "Mark Complete";
-        deleteButton.textContent = "Delete"
 
 
-        editButton.appendChild(faPenToSquareIcon.node[0])
+        editButton.appendChild(faPenToSquareIcon.node[0]);
+        deleteButton.appendChild(faTrashCanIcon.node[0]);
         card.appendChild(title);
-        card.appendChild(description);
         card.appendChild(dueDate);
+        card.appendChild(description);
         card.appendChild(priority);
-        cardOptions.appendChild(completeButton);
         cardOptions.appendChild(editButton);
         cardOptions.appendChild(deleteButton);
         card.appendChild(cardOptions);
-
+        
         deleteButton.addEventListener('click', (e) => {
             projectController.getCurrentProject().deleteTask(e);
+        });
+
+        card.addEventListener('click', (e) => {
+            const description = e.target.closest('.card').querySelector('.todo-description');
+
+            if(e.target.closest('.card').classList.contains('editing')) return;
+            if(description.classList.contains('show')){
+                e.target.closest('.card').querySelector('.todo-description').classList.remove("show");
+            }else{
+                description.classList.add("show");
+            }
         });
 
         editButton.addEventListener('click', (e) => {
