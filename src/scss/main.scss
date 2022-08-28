@@ -202,11 +202,14 @@ main {
 
             .todo-description {
                 height: 0;
+                width: 0;
                 opacity: 0;
+                word-wrap: break-word;
 
                 &.show {
                     grid-column: span 2;
                     height: auto;
+                    width: auto;
                     opacity: 1;
                     transition: opacity 1s ease-in-out;
                 }
