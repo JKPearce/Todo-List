@@ -19,6 +19,7 @@ const faPenToSquareIcon = icon(faPenToSquare);
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
+projectController.getCurrentProject().addTask(new Task("Default Task", "This is a placeholder description", new Date(), "low"));
 displayTaskList();
 
 projectButtons.forEach(button => {
