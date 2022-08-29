@@ -1,6 +1,8 @@
 # Todo-List
+
 Todo list to allow users to keep track of tasks they need to do
 Features Include
+
 - Add task
 - Add new projects
 - Display tasks due today
@@ -12,9 +14,11 @@ Features Include
 Live Demo: [Here](https://jkpearce.github.io/Todo-List/)
 
 ## Goals
+
 This project goals were to practice JavaScript Object Oriented Programming Principles mostly by following "Single Responsibility Principle" and avoid tightly coupled objects
 
-### Tech used 
+### Tech used
+
 - HTML
 - SCSS
 - JavaScript
@@ -22,6 +26,7 @@ This project goals were to practice JavaScript Object Oriented Programming Princ
 - WebPack
 
 #### Future improvements
+
 - Add local storage
 - Add cloud storage and user accounts
 - Add filter by date
@@ -30,4 +35,3 @@ This project goals were to practice JavaScript Object Oriented Programming Princ
 - Move all completed tasks to an archive project
 - Add side panel hider
 - Make page reactive to small screens
-

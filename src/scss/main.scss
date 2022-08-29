@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 $primary-dark: #221e1a;
 $secondary-dark: #a89d8b;
@@ -8,334 +8,333 @@ $secondary-light: #f4f3f2;
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    background-color: $primary-light;
-    color: $primary-dark;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
+  background-color: $primary-light;
+  color: $primary-dark;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 header {
-    width: 100%;
-    background-color: $primary-dark;
-    color: $primary-light;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    height: 90px;
+  width: 100%;
+  background-color: $primary-dark;
+  color: $primary-light;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  height: 90px;
 }
 
 main {
-    display: flex;
+  display: flex;
 
-    .selected {
-        background: #ccc;
-    }
+  .selected {
+    background: #ccc;
+  }
 
-    button {
-        width: 100%;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        border: none;
-        color: inherit;
-        font-family: inherit;
-        font-size: inherit;
-        outline: none;
-        background-color: inherit;
-        text-align: left;
-    }
+  button {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    background-color: inherit;
+    text-align: left;
+  }
 
-    button:hover {
-        background-color: $secondary-dark;
-    }
+  button:hover {
+    background-color: $secondary-dark;
+  }
 
-    aside {
-        width: 300px;
-        min-width: 250px;
-        min-height: calc(100vh - 90px);
-        background: $secondary-light;
-        padding: 20px;
-        overflow: auto;
+  aside {
+    width: 300px;
+    min-width: 250px;
+    min-height: calc(100vh - 90px);
+    background: $secondary-light;
+    padding: 20px;
+    overflow: auto;
 
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
 
-            .top-section {
-                display: flex;
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            h1 {
-                padding: 5px;
-            }
-
-            .project-btn-wrapper {
-                margin-left: 2rem;
-
-                button {
-                    margin: 10px 0;
-                }
-            }
-
-            .add-project-btn {
-                display: inline-block;
-
-                &.active {
-                    display: none;
-                }
-            }
-
-            form {
-                display: none;
-                flex-direction: column;
-                padding: 10px;
-                gap: 1rem;
-
-                &.active {
-                    display: flex;
-                }
-
-                input {
-                    font-size: 1.6rem;
-                    padding: 10px;
-                    border-radius: 10px;
-                    border: none;
-                    box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
-                }
-
-                .add-project-form-buttons {
-                    display: flex;
-                    gap: 0.5rem;
-
-                    .btn-submit {
-                        background: lightgreen;
-                        color: $primary-dark;
-                        font-weight: bold;
-                    }
-
-                    .btn-cancel {
-                        background-color: rgba($color: red, $alpha: 0.3);
-                        color: $primary-dark;
-                        font-weight: bold;
-                    }
-
-                    button:hover {
-                        background: #ccc;
-                    }
-                }
-            }
-        }
-    }
-
-    .content {
+      .top-section {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        padding: 1rem;
-        width: 900px;
+        gap: 2rem;
+      }
+
+      h1 {
+        padding: 5px;
+      }
+
+      .project-btn-wrapper {
+        margin-left: 2rem;
+
+        button {
+          margin: 10px 0;
+        }
+      }
+
+      .add-project-btn {
+        display: inline-block;
+
+        &.active {
+          display: none;
+        }
+      }
+
+      form {
+        display: none;
+        flex-direction: column;
+        padding: 10px;
         gap: 1rem;
 
-        .add-new-task-btn {
-            height: 50px;
-            display: inline-block;
-
-            &.active {
-                display: none;
-            }
+        &.active {
+          display: flex;
         }
 
-        .project-todo-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        input {
+          font-size: 1.6rem;
+          padding: 10px;
+          border-radius: 10px;
+          border: none;
+          box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
         }
 
-        .card {
-            background-color: $secondary-light;
-            position: relative;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            align-items: center;
+        .add-project-form-buttons {
+          display: flex;
+          gap: 0.5rem;
 
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 2px solid;
-            box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+          .btn-submit {
+            background: lightgreen;
+            color: $primary-dark;
+            font-weight: bold;
+          }
 
-            &.low {
-                border-color: rgba($color: green, $alpha: 1);
-            }
+          .btn-cancel {
+            background-color: rgba($color: red, $alpha: 0.3);
+            color: $primary-dark;
+            font-weight: bold;
+          }
 
-            &.medium {
-                border-color: rgba($color: yellow, $alpha: 1);
-            }
-
-            &.high {
-                border-color: rgba($color: red, $alpha: 1);
-            }
-
-            &.editing {
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-
-                .todo-title,
-                .todo-description {
-                    border: 1px solid black;
-                    padding: 1rem;
-                }
-
-                .card-options {
-                    position: static;
-                }
-            }
-
-            .todo-description {
-                height: 0;
-                width: 0;
-                opacity: 0;
-                word-wrap: break-word;
-
-                &.show {
-                    grid-column: span 2;
-                    height: auto;
-                    width: auto;
-                    opacity: 1;
-                    transition: opacity 1s ease-in-out;
-                }
-            }
-
-            .arrow {
-                position: absolute;
-                top: 0;
-                right: 1rem;
-                transform: rotate(0deg);
-                transition: transform 0.5s linear;
-
-                &.up {
-                    transform: rotate(180deg);
-                    transition: transform 0.5s linear;
-                }
-
-                svg {
-                    border-radius: 1rem;
-                }
-
-                :hover {
-                    background-color: #ccc;
-                }
-            }
-
-            .priority {
-                display: none;
-
-                &.show {
-                    display: block;
-                    grid-column: span 2;
-                }
-            }
-
-            .due-date {
-                justify-self: end;
-            }
-
-            .card-options {
-                display: flex;
-                gap: 0.5rem;
-                justify-content: space-evenly;
-                align-items: center;
-                position: absolute;
-                bottom: 1rem;
-                right: 1rem;
-
-                i {
-                    width: 1rem;
-                    height: 1rem;
-
-                    svg:hover {
-                        transform: scale(1.3);
-                    }
-                }
-
-                .delete-btn {
-                    color: red;
-
-                }
-            }
+          button:hover {
+            background: #ccc;
+          }
         }
-
-        .add-new-task-form {
-            flex-direction: column;
-            gap: 0.5rem;
-            display: none;
-            font-size: 1rem;
-
-            &.active {
-                display: flex;
-            }
-
-            input {
-                font-size: 1.2rem;
-                padding: 10px;
-                border-radius: 10px;
-                border: none;
-                box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
-            }
-
-            .new-description {
-                resize: vertical;
-                font-size: 1.2rem;
-                padding: 10px;
-                border-radius: 10px;
-                border: none;
-                box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
-            }
-
-            input[type="radio"] {
-                box-shadow: none;
-            }
-
-            #taskDueDate {
-                max-width: 33%;
-            }
-
-            .priority-wrapper {
-                display: flex;
-                justify-content: flex-start;
-                gap: 1rem;
-                margin: 0.5rem 0;
-            }
-
-            .btn-submit {
-                background: lightgreen;
-                color: $primary-dark;
-                font-weight: bold;
-            }
-
-            .btn-cancel {
-                background-color: rgba($color: red, $alpha: 0.3);
-                color: $primary-dark;
-                font-weight: bold;
-            }
-
-            button:hover {
-                background: #ccc;
-            }
-
-            .form-buttons {
-                display: flex;
-                gap: 0.5rem;
-            }
-        }
+      }
     }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: 900px;
+    gap: 1rem;
+
+    .add-new-task-btn {
+      height: 50px;
+      display: inline-block;
+
+      &.active {
+        display: none;
+      }
+    }
+
+    .project-todo-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card {
+      background-color: $secondary-light;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 2px solid;
+      box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+
+      &.low {
+        border-color: rgba($color: green, $alpha: 1);
+      }
+
+      &.medium {
+        border-color: rgba($color: yellow, $alpha: 1);
+      }
+
+      &.high {
+        border-color: rgba($color: red, $alpha: 1);
+      }
+
+      &.editing {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        .todo-title,
+        .todo-description {
+          border: 1px solid black;
+          padding: 1rem;
+        }
+
+        .card-options {
+          position: static;
+        }
+      }
+
+      .todo-description {
+        height: 0;
+        width: 0;
+        opacity: 0;
+        word-wrap: break-word;
+
+        &.show {
+          grid-column: span 2;
+          height: auto;
+          width: auto;
+          opacity: 1;
+          transition: opacity 1s ease-in-out;
+        }
+      }
+
+      .arrow {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        transform: rotate(0deg);
+        transition: transform 0.5s linear;
+
+        &.up {
+          transform: rotate(180deg);
+          transition: transform 0.5s linear;
+        }
+
+        svg {
+          border-radius: 1rem;
+        }
+
+        :hover {
+          background-color: #ccc;
+        }
+      }
+
+      .priority {
+        display: none;
+
+        &.show {
+          display: block;
+          grid-column: span 2;
+        }
+      }
+
+      .due-date {
+        justify-self: end;
+      }
+
+      .card-options {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: space-evenly;
+        align-items: center;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+
+        i {
+          width: 1rem;
+          height: 1rem;
+
+          svg:hover {
+            transform: scale(1.3);
+          }
+        }
+
+        .delete-btn {
+          color: red;
+        }
+      }
+    }
+
+    .add-new-task-form {
+      flex-direction: column;
+      gap: 0.5rem;
+      display: none;
+      font-size: 1rem;
+
+      &.active {
+        display: flex;
+      }
+
+      input {
+        font-size: 1.2rem;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
+      }
+
+      .new-description {
+        resize: vertical;
+        font-size: 1.2rem;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
+      }
+
+      input[type="radio"] {
+        box-shadow: none;
+      }
+
+      #taskDueDate {
+        max-width: 33%;
+      }
+
+      .priority-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        margin: 0.5rem 0;
+      }
+
+      .btn-submit {
+        background: lightgreen;
+        color: $primary-dark;
+        font-weight: bold;
+      }
+
+      .btn-cancel {
+        background-color: rgba($color: red, $alpha: 0.3);
+        color: $primary-dark;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background: #ccc;
+      }
+
+      .form-buttons {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
 }
