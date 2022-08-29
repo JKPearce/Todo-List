@@ -4,7 +4,7 @@ import ProjectController from "./modules/ProjectController";
 import { format, formatISO } from "date-fns";
 import { library, icon } from '@fortawesome/fontawesome-svg-core';
 import { faPenToSquare, faTrashCan, } from "@fortawesome/free-regular-svg-icons";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const projectController = new ProjectController();
 const addNewTaskButton = document.getElementById('addTaskBtn');
@@ -15,10 +15,10 @@ const todoWrapper = document.querySelector('.project-todo-wrapper');
 const projectButtons = document.querySelectorAll('.project-btn');
 
 //font awesome icon creation
-library.add(faPenToSquare, faTrashCan, faArrowDown);
+library.add(faPenToSquare, faTrashCan, faAngleDown);
 const faPenToSquareIcon = icon(faPenToSquare);
 const faTrashCanIcon = icon(faTrashCan);
-const faArrowDownIcon = icon(faArrowDown);
+const faArrowDownIcon = icon(faAngleDown);
 
 addTaskForm.onsubmit = addTaskToProject;
 addProjectForm.onsubmit = addNewProject;
